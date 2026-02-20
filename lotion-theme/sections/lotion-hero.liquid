@@ -1,0 +1,45 @@
+<section class="lotion-hero">
+  <div class="lotion-hero__content">
+    <h1>{{ section.settings.title }}</h1>
+    <p>{{ section.settings.subtitle }}</p>
+    <a href="{{ section.settings.button_link }}" class="lotion-hero__button">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Lotion Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Título",
+      "default": "Hidratação profunda"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtítulo",
+      "default": "Loção leve, nutritiva e cheirosa."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Texto do botão",
+      "default": "Compre agora"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lotion Hero"
+    }
+  ]
+}
+{% endschema %}
