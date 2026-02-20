@@ -1,7 +1,7 @@
 {
     "sections": {
         "main": {
-            "type": "lotion-hero"
+            "type": "lotion-lp"
         }
     },
     "order": ["main"]

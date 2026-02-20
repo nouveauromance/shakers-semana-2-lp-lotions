@@ -1,0 +1,95 @@
+<section class="lotion-lp">
+
+  <div class="page-content">
+    <h1>{{ page.title }}</h1>
+    <div>
+      {{ page.content }}
+    </div>
+  </div>
+
+  {% if section.settings.featured_product != blank %}
+    {% assign product = all_products[section.settings.featured_product] %}
+
+    <div class="featured-product">
+      <h2>{{ product.title }}</h2>
+
+      {% if product.featured_image %}
+        <img 
+          src="{{ product.featured_image | img_url: '600x600' }}" 
+          alt="{{ product.title }}"
+          width="600"
+          height="600"
+        >
+      {% else %}
+        <img 
+          src="https://via.placeholder.com/600x600.png?text={{ product.title | url_encode }}" 
+          alt="Imagem não disponível"
+          width="600"
+          height="600"
+        >
+      {% endif %}
+
+      <p>{{ product.price | money }}</p>
+      <a href="{{ product.url }}">Ver produto</a>
+    </div>
+  {% endif %}
+
+  {% if section.settings.lotions_collection != blank %}
+    {% assign collection = collections[section.settings.lotions_collection] %}
+
+    <div class="collection-products">
+      <h2>{{ collection.title }}</h2>
+
+      <div class="products-grid">
+        {% for product in collection.products %}
+          <div class="product-card">
+            <h3>{{ product.title }}</h3>
+
+            {% if product.featured_image %}
+              <img 
+                src="{{ product.featured_image | img_url: '400x400' }}" 
+                alt="{{ product.title }}"
+                width="400"
+                height="400"
+              >
+            {% else %}
+              <img 
+                src="https://via.placeholder.com/400x400.png?text={{ product.title | url_encode }}" 
+                alt="Imagem não disponível"
+                width="400"
+                height="400"
+              >
+            {% endif %}
+
+            <p>{{ product.price | money }}</p>
+            <a href="{{ product.url }}">Ver produto</a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+
+</section>
+
+{% schema %}
+{
+  "name": "Lotion - Landing Page",
+  "settings": [
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": "Produto em destaque"
+    },
+    {
+      "type": "collection",
+      "id": "lotions_collection",
+      "label": "Coleção de loções"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Lotion - Landing Page"
+    }
+  ]
+}
+{% endschema %}
